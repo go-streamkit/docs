@@ -5,7 +5,16 @@ weight: 10
 
 # go-streamkit {#go-streamkit}
 
-Site-agnostic transport for streaming media: a retrying, rate-limited HTTP client, an HLS parser and an MPEG-DASH manifest reader.
+Site-agnostic transport for streaming media: a retrying, rate-limited HTTP client, an HLS playlist parser and writer, and an MPEG-DASH manifest reader and writer.
+
+The writers (v0.1.0) produce VOD playlists and static MPDs for CMAF/fMP4 and
+WebVTT segments, such as the ones go-avkit's `container.Segment` cuts: HLS media
+and master playlists (AUDIO and SUBTITLES renditions) through
+[Eyevinn/hls-m3u8](https://github.com/Eyevinn/hls-m3u8), and an `isoff-live`
+MPD with `SegmentTemplate` and `SegmentTimeline` through
+[Eyevinn/dash-mpd](https://github.com/Eyevinn/dash-mpd). URIs and names are
+validated (no traversal, no injected tags). No live playlists, no encoding
+ladders, no encryption.
 
 Part of the **Graphics, images & media** family of the
 [pure-Go ecosystem](https://go-desktop.github.io/) — 1 module,
